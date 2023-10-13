@@ -23,7 +23,6 @@ class DB:
         self.__session = None
 
     @property
-
     def _session(self) -> Session:
         """Memoized session object
         """
