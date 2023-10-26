@@ -71,6 +71,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
 def main() -> None:
     """ Implement a main function
     """
+    logger = get_logger()
     db = get_db()
     cursor = db.cursor()
     cursor.execute("SELECT * FROM users;")
@@ -78,7 +79,7 @@ def main() -> None:
         message = f"name={row[0]}; email={row[1]}; phone={row[2]}; " +\
             f"ssn={row[3]}; password={row[4]};ip={row[5]}; " +\
             f"last_login={row[6]}; user_agent={row[7]};"
-        print(message)
+        logger.info(message)
     cursor.close()
     db.close()
 
